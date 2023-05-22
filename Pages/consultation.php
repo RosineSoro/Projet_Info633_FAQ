@@ -1,5 +1,6 @@
 <?php
-session_start();
+/*
+session_start(); 
 
 // Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['username'])) {
@@ -13,8 +14,8 @@ if (isset($_POST['logout'])) {
     session_destroy(); // Détruire la session
     header("Location: login.php");
     exit();
-}
-?>
+}*/
+?> 
 
 <!DOCTYPE html>
 
@@ -38,35 +39,38 @@ if (isset($_POST['logout'])) {
 			<?php
 					try
 					{
-						$db = new PDO('mysql:host=localhost;dbname=projetbdd;charset=utf8', 'root', '');
+						$db = new PDO('mysql:host=tp-epua:3308; dbname=chafikya;charset=utf8', 'chafikya', '61md4vj3');
 					}
 					catch (Exception $e)
 					{
 						   die('erreur : ' . $e->getMessage());
 					}
 			?>
-		
-			<div class="dropdown">
-				  <button class="dropbtn">
-					 <span>Catégorie </span>
-					 <i class="fa fa-caret-down"></i>
-				  </button>
-				  <div class="dropdown-content">
-						<a href="#">BDD</a>
-						<a href="#">HTML</a>
-						<a href="#">CSS</a>
-						<a href="#">PHP</a>
-						<a href="#">JAVASCRIPT</a>
-						<a href="#">GIT</a>
-				  </div>
-			</div>
-			 
-			<div class = "question-button">
-				   <button type = "submit" name = "ask-question">Poser Une Question</button>
-				   <button type = "submit" name = "pending-question">Questions En Attente</button>
+			
+	        <div class="entete">
+                <div class = "question-button">
+					   <button type = "submit" name = "ask-question">Poser Une Question</button> </br>
+					   <button type = "submit" name = "pending-question">Questions En Attente</button>
+				</div>
+				
+				<div class="dropdown">
+					  <button class="dropbtn">
+						 <span>Catégorie </span>
+						 <i class="fa fa-caret-down"></i>
+					  </button>
+					  <div class="dropdown-content">
+							<a href="#">BDD</a>
+							<a href="#">HTML</a>
+							<a href="#">CSS</a>
+							<a href="#">PHP</a>
+							<a href="#">JAVASCRIPT</a>
+							<a href="#">GIT</a>
+					  </div>
+				</div>
+			
 			</div>
 			
-			<div class="question-title">
+			<div class="question">
 			    <!-- gérer le fait que si on clique sur BDD par exemple, on ait les éléments qui s'affichent en fonction-->
 			    <!-- gérer aussi pour les dates-->
 				<?php 
@@ -77,7 +81,7 @@ if (isset($_POST['logout'])) {
 				foreach ($result as $row ) {
 					//remplacer les liens par des liens qui renverront vers la page de Colin 
 					//faire le css pour le bon affichage
-					echo("<a href=\"#\">".$row['titre']."</a>");
+					echo("<div> <a href=\"#\">".$row['titre']."</a> </div>");
 
 				}
 

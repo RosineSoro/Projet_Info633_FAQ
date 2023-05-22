@@ -1,18 +1,27 @@
+
+
 #content{
 	display:flex;
-	flex-direction:row;
-	
+	flex-direction:row;	
+}
+
+.entete{
+	display:flex;
+	flex-direction:column !important;
+	background : aqua;
+	height: 100%;
 }
 
 .question-button{
-	margin-right:auto;
-	margin-left:auto;
+
+	margin-left:10px;
 	width:100 px;
-	margin-top:20px;
+	margin-top:10px;
 }
 
 .question-button button {
    margin-right: 10px;
+   margin-bottom:20px;
 }
 
 
