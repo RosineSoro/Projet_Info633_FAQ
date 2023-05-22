@@ -1,2 +1,0 @@
-Pour les sessions : dans le dossier parent de login.php il faut créer un dossier "session_tmp" pour que PHP puisse gérer les sessions.
-Dans le fichier login.php : mettre ses identifiants pour la BD à la ligne 15 et 25.
