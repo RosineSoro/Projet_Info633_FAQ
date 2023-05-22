@@ -28,17 +28,21 @@
 
     
 <?php
-    $id_Question=1;
+    $id_Question=$_GET['id_question'];
     $sql="select * from question where id_question =".$id_Question;
     $result=  mysqli_query($conn, $sql);
     $ligne = mysqli_fetch_assoc($result);
         echo ("<form method=\"post\">");
     echo("<textarea name=\"titre\">".$ligne['titre']."</textarea>");
-    echo("<textarea>".$ligne['contenu']."</textarea>");
-    echo("<button type=\"submit\>valider</button>");
-    echo("</form>")
+    echo("<textarea name='question'>".$ligne['contenu']."</textarea>");
+    echo("<textarea name='reponse' placeholder='tapez votre reponse ici'></textarea>");
+    echo("<button type=\"submit\">valider</button>");
+    echo("</form>");
     
-if (isset($_POST['titre']))
+if (isset($_POST['reponse'])){
+    $sql="update question set titre =".$_POST['titre']. ",contenu=".$_POST['question']."where id_question=".$id_Question;
+    $sql1="update reponse set contenu_rep=".$_POST['reponse']."where id_question=".$id_Question;
+}
 
 ?>
 
