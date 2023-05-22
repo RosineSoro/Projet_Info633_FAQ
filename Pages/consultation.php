@@ -1,94 +1,106 @@
-<?php
-/*
-session_start(); 
-
-// Vérifier si l'utilisateur est connecté
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-    exit();
-}
-
-// Gestion de la déconnexion
-if (isset($_POST['logout'])) {
-    session_unset(); // Supprimer toutes les variables de session
-    session_destroy(); // Détruire la session
-    header("Location: login.php");
-    exit();
-}*/
-?> 
-
 <!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Forum de questions</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="consultation.css">
+</head>
 
+<?php   
+	/*Connexion à la base de données sur le serveur tp-epua*/
 
-<html lang="fr"> 
-
+	// Connexion à la base de données
+	$servername = "tp-epua:3308";
+	$username = "chafikya";
+	$password = "61md4vj3";
+	$dbname = "chafikya";
+?> 
   
+  
+<body>
+  <div class="container-fluid">
+  <div class="row">
+      <div class="col-md-3 sidebar">
+          <div class="sidebar-content">
+            <button class="btn btn-primary btn-block button-spacing">Poser une question</button>
+            <button class="btn btn-primary btn-block button-spacing">Mes questions en attente</button>
+			 <form method="post">
 
-   <head>
-		  <title>Page de Consultation</title>
-		  <meta charset="UTF-8">
-		  <link rel="stylesheet" type="text/css" href="consultation.css">
-		  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		 
-    </head> 
-	
-	<body>
-	    
-		<div = id="content">
-		    
-			<?php
-					try
-					{
-						$db = new PDO('mysql:host=tp-epua:3308; dbname=chafikya;charset=utf8', 'chafikya', '61md4vj3');
-					}
-					catch (Exception $e)
-					{
-						   die('erreur : ' . $e->getMessage());
-					}
-			?>
-			
-	        <div class="entete">
-                <div class = "question-button">
-					   <button type = "submit" name = "ask-question">Poser Une Question</button> </br>
-					   <button type = "submit" name = "pending-question">Questions En Attente</button>
-				</div>
-				
-				<div class="dropdown">
-					  <button class="dropbtn">
-						 <span>Catégorie </span>
-						 <i class="fa fa-caret-down"></i>
-					  </button>
-					  <div class="dropdown-content">
-							<a href="#">BDD</a>
-							<a href="#">HTML</a>
-							<a href="#">CSS</a>
-							<a href="#">PHP</a>
-							<a href="#">JAVASCRIPT</a>
-							<a href="#">GIT</a>
-					  </div>
-				</div>
-			
-			</div>
-			
-			<div class="question">
-			    <!-- gérer le fait que si on clique sur BDD par exemple, on ait les éléments qui s'affichent en fonction-->
-			    <!-- gérer aussi pour les dates-->
-				<?php 
-				$sql ="select titre from question";
-				$sqlexec = $db->prepare($sql);
-				$sqlexec ->execute();
-				$result = $sqlexec ->fetchAll();
-				foreach ($result as $row ) {
-					//remplacer les liens par des liens qui renverront vers la page de Colin 
-					//faire le css pour le bon affichage
-					echo("<div> <a href=\"#\">".$row['titre']."</a> </div>");
+            <select class="form-control" name ="cat">
+              <option value="">Toutes les catégories</option>
+              <?php
 
-				}
+                $conn = new mysqli($servername, $username, $password, $dbname);
+				mysqli_query($conn, "SET NAMES UTF8");
 
-				?>
-		    </div>
-			</div>
+                  // Vérification de la connexion
+                  if ($conn->connect_error) {
+                    die("Connexion échouée: " . $conn->connect_error);
+                  }
+
+                  // Exécution de la requête SQL pour récupérer les catégories
+                  $sql = "SELECT nom_cat FROM categorie";
+                  $result = $conn->query($sql);
+
+                  // Affichage des catégories dans la liste déroulante
+                  if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                      $selected = ($_POST['cat'] == $row["nom_cat"]) ? 'selected' : '';
+                      echo '<option value="' . $row["nom_cat"] . '"' . $selected . '>' . $row["nom_cat"] . '</option>';
+                    }
+                  }
+
+                  // Fermeture de la connexion à la base de données
+                  $conn->close();
+                ?>
+              </select>
+              <input type="submit" value="Filtrer" class="btn btn-primary btn-block">
+            </form>
+          </div>
+      </div>
+    </div> 
+      <div class="col-md-9">
+        <div class="question-list">
+          <?php
+            // Connexion à la base de données (à nouveau)
+            $conn = new mysqli($servername, $username, $password, $dbname);
+				mysqli_query($conn, "SET NAMES UTF8");
+
+            // Vérification de la connexion (à nouveau)
+            if ($conn->connect_error) {
+              die("Connexion échouée: " . $conn->connect_error);
+            }
+
+            // Construction de la requête SQL pour récupérer les questions
+            if(isset($_POST['cat']) && !empty($_POST['cat']) && ($_POST['cat']!="Toutes les catégories")) {
+              $cat = $_POST['cat'];
+              $sql = "SELECT question.* FROM question, categorie WHERE question.id_cat = categorie.id_cat AND categorie.nom_cat = '$cat'";
+            } else {
+              $sql = "SELECT * FROM question";
+            }
 			
-		</div>	
-		
-	</body>
+
+            // Exécution de la requête SQL pour récupérer les questions
+            $result = $conn->query($sql);
+
+            // Affichage des questions
+            if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                echo '<div class="question">';
+                echo '<h2>' . $row["titre"] . '</h2>';
+                echo '<p>' . $row["contenu"] . '</p>';
+                echo '<a href="repondre.php?id=' . $row["id_question"] . '">Voir réponse</a>';
+                echo '</div>';
+              }
+            }
+
+            // Fermeture de la connexion à la base de données (à nouveau)
+            $conn->close();
+          ?>
+        </div>
+      </div>
+	 </div>
+</body>
+</html>
