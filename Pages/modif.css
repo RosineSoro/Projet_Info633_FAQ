@@ -1,0 +1,16 @@
+.modif{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    
+}
+
+.bouton{
+    margin-top: 5px;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
