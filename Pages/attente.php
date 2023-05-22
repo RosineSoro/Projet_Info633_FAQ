@@ -13,8 +13,9 @@
 
    <body>
         <?php
-            $conn = 1;
-            $sql = "SELECT titre FROM questions WHERE verif = 0";
+            $conn = @mysqli_connect("tp-epua:3308", "chafikya", "61md4vj3");
+            mysqli_select_db($conn, "chafikya");
+            $sql = "SELECT titre FROM question WHERE verif = 0";
             $result = mysqli_query($conn, $sql) or die("Requête invalide: ". mysqli_error()."\n".$sql);
             $val = mysqli_fetch_array($result);
             while ($val != FALSE) {
