@@ -33,7 +33,8 @@
 			if ($result->num_rows > 0) {
 				$row = $result->fetch_assoc();
 				$_SESSION['pseudo'] = $row['pseudo'];
-				$_SESSION['statut'] = $row['statut']; // Assigner la valeur du champ "statut" à $_SESSION['statut']
+				$_SESSION['id_compte'] = $row['id_compte'];
+				$_SESSION['statut'] = $row['statut'];
 				$conn->close();
 				header("Location: consultation_2.php");
 				exit();
