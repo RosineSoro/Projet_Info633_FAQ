@@ -29,26 +29,35 @@
 <h1>Modifier les questions</h1>    
 <?php
     $id_Question=$_GET['id_question'];
+    echo($id_Question);
     $sql="select * from question where id_question =".$id_Question;
     $result=  mysqli_query($conn, $sql);
     $ligne = mysqli_fetch_assoc($result);
         echo ("<form  method=\"post\">");
-    echo("<textarea class='modif' name=\"titre\">".$ligne['titre']."</textarea>");
+    echo("<textarea class='modif' name='titre'>".$ligne['titre']."</textarea>");
     echo("<textarea  class='modif' name='question'>".$ligne['contenu']."</textarea>");
     echo("<textarea  class='modif' name='reponse' placeholder='tapez votre reponse ici'></textarea>");
     echo("<div class='bouton' >");
-    echo("<button  type=\"submit\">valider</button>");
+    echo("<button  name='valider' type= 'submit'>valider</button>");
     echo("</div>");
     echo("</form>");
     
-if (isset($_POST['reponse'])){
-    $sql="update question set titre =".$_POST['titre']. ",contenu=".$_POST['question']."where id_question=".$id_Question
-    .";".
-    "update reponse set contenu_rep=".$_POST['reponse']."where id_question=".$id_Question;
-    $result=mysqli_query($conn, $sql);
+if (isset($_POST['valider'])){
+    $sql1="update question set titre =\"".$_POST['titre']. "\",contenu=\"".$_POST['question']."\" where id_question = ".$id_Question;
+    $sql2="update reponse set contenu_rep=\"".$_POST['reponse']."\" where id_question=".$id_Question;
+    $result1 = mysqli_query($conn, $sql1);
+    if (!$result1) {
+        die('Erreur SQL : ' . mysqli_error($conn));
+    }
+
+    $result2=mysqli_query($conn, $sql2);
+    if (!$result2) {
+        die('Erreur SQL : ' . mysqli_error($conn));
+    }
 }
 
 ?>
+
 
 </body>
 </html>
