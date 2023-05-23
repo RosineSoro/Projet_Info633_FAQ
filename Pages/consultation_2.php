@@ -5,6 +5,10 @@
 	if (!isset($_SESSION['pseudo'])) {
 		header("Location: login.php");
 		exit();
+	} else {
+		$id_compte = $_SESSION['id_compte'];
+		$pseudo = $_SESSION['pseudo'];
+		$statut = $_SESSION['statut'];
 	}
 	
 	// Gestion de la déconnexion
@@ -32,8 +36,7 @@
 	<link rel="stylesheet" href="consultation.css">
 </head>
 
-  
-  
+ 
 <body>
   <div class="container-fluid">
   <div class="row">
@@ -42,8 +45,8 @@
 			<form method="post">
 				<button type="submit" class="btn btn-primary btn-block button-spacing" name="logout">Se déconnecter</button>
 			</form>
-			<button class="btn btn-primary btn-block button-spacing">Poser une question</button>
-            <button class="btn btn-primary btn-block button-spacing">Mes questions en attente</button>
+			<a href="poserQuestion.php" class="btn btn-primary btn-block button-spacing">Poser une question</a>
+			<a href="attente.php" class="btn btn-primary btn-block button-spacing">Mes questions en attente</a>
 			<form method="post">
             <select class="form-control" name ="cat">
               <option value="">Toutes les catégories</option>
@@ -77,8 +80,8 @@
             </form>
           </div>
       </div>
-    </div> 
       <div class="col-md-9">
+		<h1 class="main_title">FORUM</h1>
         <div class="question-list">
           <?php
             // Connexion à la base de données
@@ -98,7 +101,6 @@
 					  categorie.nom_cat = '$cat' AND
 					  question.verif = 1;
 					  ";
-			  $unset($_POST);
 			} else {
               $sql = "SELECT * FROM question";
             }
@@ -113,13 +115,14 @@
                 echo '<div class="question">';
                 echo '<h2>' . $row["titre"] . '</h2>';
                 echo '<p>' . $row["contenu"] . '</p>';
-                echo '<a href="repondre.php?id=' . $row["id_question"] . '">Voir réponse</a>';
+                echo '<a href="reponseQuestion.php?id=' . $row["id_question"] . '">Voir réponse</a>';
                 echo '</div>';
               }
             }
 
-            // Fermeture de la connexion à la base de données (à nouveau)
+            // Fermeture de la connexion à la base de données.
             $conn->close();
+			//unset($_POST['cat']);
           ?>
         </div>
       </div>
