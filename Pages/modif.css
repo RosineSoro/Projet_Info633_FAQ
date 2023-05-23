@@ -1,4 +1,5 @@
 .modif{
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -6,11 +7,31 @@
     
 }
 
+.btn{
+    background: #007BFF;
+}
+.form-label{
+    color: #007BFF;
+}
 .bouton{
-    margin-top: 5px;
+    margin-top: 2%;
     text-align: center;
+    
+}
+#form-content{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
 }
 
 h1{
+    margin-top: 5%;
     text-align: center;
 }
+div{
+    margin-top: 20px;
+}
+
+textarea {
+    border: 1px solid #007BFF;
+  }
