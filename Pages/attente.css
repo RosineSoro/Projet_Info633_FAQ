@@ -1,11 +1,50 @@
 div.question {
-    background-color: red;
+    background-color: #54A7FF;
     border-style: solid;
     border-width: 3px 3px 3px 3px;
     border-color: black;
     margin-top: 10px;
 }
+div.question:hover {
+    background-image: linear-gradient(to bottom right, #54A7FF, cyan);
+}
 
 h1 {
     text-align: center;
 }
+h2 {
+    text-align: center;
+}
+
+a#question_lien {
+    text-decoration: none;
+}
+
+h3.question_titre {
+    display: inline;
+    margin-right: 30px;
+    text-decoration:none; 
+    color: black; 
+}
+c {
+    display: inline;
+    margin-right: 30px;
+    text-decoration: none; 
+    color: black; 
+}
+p {
+    display: inline;
+    text-decoration: none; 
+    color: black; 
+}
+t {
+    display:block;
+    margin-top: 10px;
+    text-decoration: none; 
+    color: black; 
+}
+
+h3.question_titre:hover{text-decoration:none}
+c:hover{text-decoration:none}
+p:hover{text-decoration:none}
+t:hover{text-decoration:none}
