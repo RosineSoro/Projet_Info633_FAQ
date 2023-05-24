@@ -1,6 +1,5 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
     margin: 0;
     padding: 20px;
   }
@@ -15,15 +14,16 @@ body {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
+    color: #007BFF;
   }
   
   input[type="text"],
   textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
     border-radius: 4px;
     margin-bottom: 10px;
+    border: 1px solid #007BFF;
   }
   
   select {

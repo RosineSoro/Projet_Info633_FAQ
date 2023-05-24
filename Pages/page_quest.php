@@ -44,16 +44,11 @@ function estProfesseur()
     
    
     
-        if (isset($_SESSION['utilisateur_id'])) {
-            $utilisateurId = $_SESSION['utilisateur_id'];}
-        $sql_1 = " select statut from compte where id_compte= ".$utilisateurId ;
-        $result = mysqli_query($conn, $sql_1) or die("Requête invalide: ". mysqli_error($conn)."\n".$sql_1);
-       
-        while ($row = mysqli_fetch_assoc($result)){  
-          if ($row["statut"] == 1) {
+        if (($_SESSION['statut'])==1) {
+            
             return true; 
-          }}
-    
+          
+        }
 
     return false; 
     }
@@ -61,17 +56,13 @@ function estProfesseur()
 // Vérifier si l'utilisateur est connecté en tant qu'étudiant
 function estEtudiant()
 {   $conn=connexion();
-        if (isset($_SESSION['utilisateur_id'])) {
-            $utilisateurId = $_SESSION['utilisateur_id'];}
-        $sql_1 = " select statut from compte where id_compte=".$utilisateurId;
-        $result = mysqli_query($conn, $sql_1) or die("Requête invalide: ". mysqli_error($conn)."\n".$sql_1);
+    if (($_SESSION['statut'])==1) {
+            
+        return true; 
+      
+    }
         
-        while ($row = mysqli_fetch_assoc($result)){  
-            if ($row["statut"] == 0) {
-              return true; 
-            }}
-        
-    
+
 
     return false;
 }
@@ -103,11 +94,10 @@ function afficherFormulaireQuestionProf()
     
             if (isset($_GET["poser"])){
                 
-                if (isset($_SESSION['utilisateur_id'])) {
-                    $utilisateurId = $_SESSION['utilisateur_id'];}
+               
                 
-            $sql_4 = "INSERT INTO question (titre, contenu, id_compte, id_cat, verif) VALUES ('{$_GET["titre"]}', '{$_GET["contenu"]}', '.$utilisateurId.', '{$_GET["categorie"]}', '1')";
-            echo $sql_4;
+            $sql_4 = "INSERT INTO question (titre, contenu, id_compte, id_cat, verif) VALUES (\"{$_GET["titre"]}\", \"{$_GET["contenu"]}\", \"{$_SESSION['id_compte']}\", \"{$_GET["categorie"]}\", '1')";
+            
         $result = mysqli_query($conn, $sql_4) or die("Requête invalide: ". mysqli_error($conn)."\n".$sql_4);}
     echo '</form>';
 }
@@ -136,11 +126,9 @@ echo '<a href="consultation_2.php">Cliquez ici pour aller vers la page principal
     
     
             if (isset($_GET["poser"])){
-                if (isset($_SESSION['utilisateur_id'])) {
-                    $utilisateurId = $_SESSION['utilisateur_id'];}
+              
+                $sql_4 = " INSERT INTO question (titre,contenu,id_compte,id_cat,verif) VALUES (\"{$_GET['titre']}\", \"{$_GET["contenu"]}\", \"{$_SESSION['id_compte']}\", \"{$_GET["categorie"]}\",'0')";
                 
-                $sql_4 = " INSERT INTO question (titre,contenu,id_compte,id_cat,verif) VALUES ('{$_GET['titre']}', '{$_GET["contenu"]}', '.$utilisateurId.', '{$_GET["categorie"]}','{0})";
-                echo $sql_4;
         $result = mysqli_query($conn, $sql_4) or die("Requête invalide: ". mysqli_error($conn)."\n".$sql_4);}
     echo '</form>';
 }
@@ -150,8 +138,10 @@ echo '<a href="consultation_2.php">Cliquez ici pour aller vers la page principal
 function afficherPageQuestions()
 {
     if (estProfesseur()) {
+        
         afficherFormulaireQuestionProf();
     } elseif (estEtudiant()) {
+        
         afficherFormulaireQuestionEtudiant();
     } 
 }
