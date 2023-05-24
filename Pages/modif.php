@@ -39,12 +39,16 @@
     echo("<textarea  class='modif' name='reponse' placeholder='tapez votre reponse ici'></textarea>");
     echo("<div class='bouton' >");
     echo("<button  name='valider' type= 'submit'>valider</button>");
+    echo("<button  name='supprimer' type= 'submit'>supprimer</button>");
     echo("</div>");
     echo("</form>");
     
+    
 if (isset($_POST['valider'])){
-    $sql1="update question set titre =\"".$_POST['titre']. "\",contenu=\"".$_POST['question']."\" where id_question = ".$id_Question;
+    $sql1="update question set titre =\"".$_POST['titre']. "\",contenu=\"".$_POST['question']."\", verif=1 where id_question = ".$id_Question;
     $sql2="update reponse set contenu_rep=\"".$_POST['reponse']."\" where id_question=".$id_Question;
+
+    
     $result1 = mysqli_query($conn, $sql1);
     if (!$result1) {
         die('Erreur SQL : ' . mysqli_error($conn));
@@ -55,6 +59,15 @@ if (isset($_POST['valider'])){
         die('Erreur SQL : ' . mysqli_error($conn));
     }
 }
+if (isset($_POST['supprimer'])){
+    $sql="delete from question where id_question=".$id_Question;
+    $result1 = mysqli_query($conn, $sql);
+    if (!$result1) {
+        die('Erreur SQL : ' . mysqli_error($conn));
+    }
+    header("Location: consultation.php");
+}
+
 
 ?>
 
