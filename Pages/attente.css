@@ -1,12 +1,20 @@
-div.question {
+div.question_p {
     background-color: #54A7FF;
     border-style: solid;
     border-width: 3px 3px 3px 3px;
     border-color: black;
     margin-top: 10px;
 }
-div.question:hover {
+div.question_p:hover {
     background-image: linear-gradient(to bottom right, #54A7FF, cyan);
+}
+
+div.question_e {
+    background-color: #54A7FF;
+    border-style: solid;
+    border-width: 3px 3px 3px 3px;
+    border-color: black;
+    margin-top: 10px;
 }
 
 h1 {

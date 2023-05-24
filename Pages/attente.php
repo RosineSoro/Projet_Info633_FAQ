@@ -47,7 +47,11 @@
                         $resultacc = mysqli_query($conn, $sqlacc) or die("Requête invalide: ". mysqli_error()."\n".$sqlacc);
                         $resacc = mysqli_fetch_array($resultacc);
                         //affichage
-                        echo "<a href='modif.php?id_question=".$val['id_question']."' id='question_lien'><div class='question'><h3 class='question_titre'>".$val['titre']."</h3><c>".$rescat['nom_cat']."</c><p>".$resacc['prenom']." ".$resacc['nom']."</p><t>".$val['contenu']."</t></div></a>";
+                        if ($_SESSION['statut'] == 1) {
+                            echo "<a href='modif.php?id_question=".$val['id_question']."' id='question_lien'><div class='question_p'><h3 class='question_titre'>".$val['titre']."</h3><c>".$rescat['nom_cat']."</c><p>".$resacc['prenom']." ".$resacc['nom']."</p><t>".$val['contenu']."</t></div></a>";
+                        } else {
+                            echo "<div class='question_e'><h3 class='question_titre'>".$val['titre']."</h3><c>".$rescat['nom_cat']."</c><p>".$resacc['prenom']." ".$resacc['nom']."</p><t>".$val['contenu']."</t></div>";
+                        }
                         $val = mysqli_fetch_array($result);
                     }
                 }
@@ -56,6 +60,6 @@
             }
         ?>
         
-        <a href='consultation.php'><h2>Retour à la page d'accueil</h2></a>
+        <a href='consultation_2.php'><h2>Retour à la page d'accueil</h2></a>
 
    </body>
