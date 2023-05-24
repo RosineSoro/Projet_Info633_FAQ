@@ -45,8 +45,8 @@
 			<form method="post">
 				<button type="submit" class="btn btn-primary btn-block button-spacing" name="logout">Se déconnecter</button>
 			</form>
-			<a href="poserQuestion.php" class="btn btn-primary btn-block button-spacing">Poser une question</a>
-			<a href="attente.php" class="btn btn-primary btn-block button-spacing">Mes questions en attente</a>
+			<a href="page_quest.php" class="btn btn-primary btn-block button-spacing">Poser une question</a>
+			<a href="attente_2.php" class="btn btn-primary btn-block button-spacing">Mes questions en attente</a>
 			<form method="post">
             <select class="form-control" name ="cat">
               <option value="">Toutes les catégories</option>
