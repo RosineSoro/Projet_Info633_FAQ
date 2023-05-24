@@ -26,7 +26,7 @@
         }
         ?>
 
-<h1>Detail question</h1>    
+<h1>Details question</h1>    
 <?php
     $id_Question=$_GET['id_question'];
     $sql="select * from question where id_question =".$id_Question; // récupère le titre de la question et la question
@@ -34,12 +34,26 @@
     $result=  mysqli_query($conn, $sql);
     $ligne = mysqli_fetch_assoc($result);
     $sql2="select * from reponse where id_question=".$id_Question; //récupère réponse de la question.
-    $result= mysqli_query($conn, $sql);
-    $rep = mysqli_fetch_assoc($result);
+    $result2= mysqli_query($conn, $sql2);
+    $rep = mysqli_fetch_assoc($result2);
+    echo("<div id ='question_content'>");
     
-    echo("<h2>".$ligne['titre']."</h2>");
-    echo("<p>".$ligne['contenu']."</p>");
-    echo("<p>".$rep['contenu_rep']."</p>");
+    echo "<div class='mb-3'>";
+    echo("<h2 cols='40' rows='5' class='question'>".$ligne['titre']."</h2>");
+    echo "</div>";
+    echo "<div class='mb-3'>";
+    echo("<p  cols='40' rows='5'  class='question' >".$ligne['contenu']."</p>");
+    echo "</div>";
+    echo "<div class='mb-3'>";
+    echo '<label class="question-label">Réponse : </label>';
+    echo("<p cols='40' rows='5'  class='question'>".$rep['contenu_rep']."</p>");
+    echo("</div>");
+    
+  echo("</div>");
+  /*
+if (estProfesseur()){
+    echo("<a href=modif.php?id_question=".$id_Question."</a>");
+}*/
 
 ?>
 

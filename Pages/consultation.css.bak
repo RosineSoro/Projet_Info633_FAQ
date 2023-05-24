@@ -1,8 +1,5 @@
 body {
-  background-image: url("fond.jpg");
-  background-size: cover;
   min-height: 100vh;
-  margin: 0;
 }
 
 .sidebar-content {
@@ -35,6 +32,16 @@ a {
 
 .sidebar {
   height: 100vh;
-  background-color: #4B4B4B;
+  background-color: #151618;
 }
 
+.col-md-9 .main_title {
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  background-image: url("background_image.jpg"); 
+  background-size: cover; 
+  padding: 20px;
+  margin-left: -15px;
+  margin-right: -15px;
+}

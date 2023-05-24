@@ -1,7 +1,32 @@
-#content {
-	width: 1000px;
+.modif{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    
 }
 
-#title{
+.question-label, h2{
+    color: #007BFF;
+}
+
+#question-content{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 3%;
 
 }
+
+h1{
+    margin-top: 5%;
+    text-align: center;
+}
+div{
+    margin-top: 20px;
+}
+
+p {
+	margin-bottom: 50px;
+	margin-top: 5px;
+  }

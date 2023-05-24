@@ -6,6 +6,8 @@
 </head>
 <body>
 
+
+
 <?php   
         /*Connexion à la base de données sur le serveur tp-epua*/
     $conn = @mysqli_connect("tp-epua:3308", "chafikya", "61md4vj3");    
@@ -26,14 +28,21 @@
         }
         ?>
 
+
+
 <h1>Modifier les questions</h1>    
+
+
 <?php
+
+    
+
     $id_Question=$_GET['id_question'];
-    echo($id_Question);
+    
     $sql="select * from question where id_question =".$id_Question;
     $result=  mysqli_query($conn, $sql);
     $ligne = mysqli_fetch_assoc($result);
-        echo ("<form  method=\"post\">");
+        /*echo ("<form  method=\"post\">");
     echo("<textarea class='modif' name='titre'>".$ligne['titre']."</textarea>");
     echo("<textarea  class='modif' name='question'>".$ligne['contenu']."</textarea>");
     echo("<textarea  class='modif' name='reponse' placeholder='tapez votre reponse ici'></textarea>");
@@ -41,9 +50,28 @@
     echo("<button  name='valider' type= 'submit'>valider</button>");
     echo("<button  name='supprimer' type= 'submit'>supprimer</button>");
     echo("</div>");
-    echo("</form>");
+    echo("</form>");*/
+    echo("<div id ='form-content'>");
+    echo ("<form  method=\"post\">");
     
-    
+    echo "<div class='mb-3'>";
+    echo '<label class="form-label">Titre de la question : </label>';
+    echo("<textarea cols='40' rows='5' class='modif' name='titre'>".$ligne['titre']."</textarea>");
+    echo "</div>";
+    echo "<div class='mb-3'>";
+    echo '<label class="form-label">Contenu de la question : </label>';
+    echo("<textarea  cols='40' rows='5'  class='modif' name='question'>".$ligne['contenu']."</textarea>");
+    echo "</div>";
+    echo "<div class='mb-3'>";
+    echo '<label class="form-label">Réponse à la question : </label>';
+    echo("<textarea cols='40' rows='5'  class='modif' name='reponse' placeholder='tapez votre reponse ici'></textarea>");;
+    echo "</div >";
+    echo("<div class='bouton' >");
+    echo("<button type='submit' class = 'btn' name ='valider'>Submit</button>");
+    echo("<button  name='supprimer'  type= 'submit'>Supprimer</button>");
+    echo("</div>");
+  echo"</form>";
+  echo("</div>");
 if (isset($_POST['valider'])){
     $sql1="update question set titre =\"".$_POST['titre']. "\",contenu=\"".$_POST['question']."\", verif=1 where id_question = ".$id_Question;
     $sql2="update reponse set contenu_rep=\"".$_POST['reponse']."\" where id_question=".$id_Question;
