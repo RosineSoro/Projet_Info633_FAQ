@@ -6,7 +6,7 @@ session_start();
 <html>
 
   <head>
-    <title></title>
+    <title> </title>
     <meta content="info">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="page_quest.css">
@@ -16,6 +16,7 @@ session_start();
   
   
 <body>
+    <h1> Poser Questions </h1>
 
 <?php
 
