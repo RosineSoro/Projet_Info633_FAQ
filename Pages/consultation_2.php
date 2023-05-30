@@ -99,10 +99,10 @@
 					  WHERE question.id_cat = categorie.id_cat AND 
 					  categorie.nom_cat = '$cat' AND
 					  question.verif = 1
-					  ORDER BY question.date_question;
+					  ORDER BY question.date_question DESC;
 					  ";
 			} else {
-              $sql = "SELECT * FROM question WHERE question.verif = 1 ORDER BY question.date_question";
+              $sql = "SELECT * FROM question WHERE question.verif = 1 ORDER BY question.date_question DESC";
             }
 			
 

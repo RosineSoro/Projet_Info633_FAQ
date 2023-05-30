@@ -103,24 +103,24 @@
 						  categorie.nom_cat = '$cat' AND
 						  question.verif = 0 AND
 						  question.id_compte = '$id_compte'
-						  ORDER BY question.date_question";
+						  ORDER BY question.date_question DESC";
 				} else {
 					$sql = "SELECT question.* FROM question, categorie 
 				    WHERE question.id_cat = categorie.id_cat AND 
 				    categorie.nom_cat = '$cat' AND
 					question.verif = 0
-					ORDER BY question.date_question";
+					ORDER BY question.date_question DESC";
 				}
 			} else {
 				if ($statut == 0){
 					$sql = "SELECT * FROM question 
 							WHERE question.verif = 0 AND
 							id_compte = '$id_compte'
-							ORDER BY question.date_question";
+							ORDER BY question.date_question DESC";
 				} else {
 					$sql = "SELECT * FROM question 
 							WHERE question.verif = 0
-							ORDER BY question.date_question";		
+							ORDER BY question.date_question DESC";		
 				}
 			}
 			
