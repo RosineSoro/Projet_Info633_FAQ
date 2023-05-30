@@ -114,7 +114,7 @@
                 echo '<div class="question">';
                 echo '<h2>' . $row["titre"] . '</h2>';
                 echo '<p>' . $row["contenu"] . '</p>';
-                echo '<a href="details.php?id=' . $row["id_question"] . '">Voir réponse</a>';
+                echo '<a href="detail.php?id=' . $row["id_question"] . '">Voir réponse</a>';
                 echo '</div>';
               }
             }
