@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+<?php session_start();?>
 <html>
+
 <head>
 	<title></title>
     <link rel="stylesheet" type="text/css" href="modif.css">
@@ -35,14 +37,21 @@
 
 <?php
 
-    session_start();
+    
+    if( $_SESSION['statut']==0){
+        echo("tu n'as pas acces à cette page ");
 
+    }
+    else{
     $id_Question=$_GET['id_question'];
     $id_compte=$_SESSION['id_compte'];
     $sql="select * from question where id_question =".$id_Question;
     $result=  mysqli_query($conn, $sql);
     $ligne = mysqli_fetch_assoc($result);
-
+    $sql2="select * from reponse where id_question=".$id_Question; //récupère réponse de la question.
+    $result2= mysqli_query($conn, $sql2);
+    $rep = mysqli_fetch_assoc($result2);
+    
     echo("<div id ='form-content'>");
     echo ("<form action='attente.php'  method=\"post\">");
     
@@ -56,7 +65,7 @@
     echo "</div>";
     echo "<div class='mb-3'>";
     echo '<label class="form-label">Réponse à la question : </label>';
-    echo("<textarea cols='40' rows='5'  class='modif' name='reponse' placeholder='tapez votre reponse ici'></textarea>");;
+    echo("<textarea cols='40' rows='5'  class='modif' name='reponse' placeholder='tapez votre reponse ici'>".$rep['contenu_rep']."</textarea>");;
     echo "</div >";
     echo("<div class='bouton' >");
     echo("<button type='submit' class = 'btn' name ='valider'>Submit</button>");
@@ -91,7 +100,7 @@ if (isset($_POST['supprimer'])){
     }
     header("Location: consultation.php");
 }
-
+    }
 
 ?>
 
