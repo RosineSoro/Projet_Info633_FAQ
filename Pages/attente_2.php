@@ -129,7 +129,7 @@
                 echo '<div class="question">';
                 echo '<h2>' . $row["titre"] . '</h2>';
                 echo '<p>' . $row["contenu"] . '</p>';
-                echo '<a href="modifQuestion.php?id=' . $row["id_question"] . '">Modifier la question</a>';
+                echo '<a href="modif.php?id=' . $row["id_question"] . '">Modifier la question</a>';
                 echo '</div>';
               }
             }
