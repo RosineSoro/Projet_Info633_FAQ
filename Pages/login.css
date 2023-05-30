@@ -1,0 +1,25 @@
+body {
+  background-image: url(background_image.jpg);
+  background-repeat: repeat;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  background-color: white;
+  padding: 5rem;
+  border-radius: 50px;
+}
+
+
+
+
+.field {
+	width : 100%;
+	margin: 5px;
+}
