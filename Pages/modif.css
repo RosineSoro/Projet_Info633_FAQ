@@ -9,16 +9,23 @@
 
 button{
     background: #007BFF;
+    border-radius: 10px;
+    padding: 1.9%;
+}
+button:hover {
+    background-color: #2600ff;
 }
 .form-label{
     color: #007BFF;
 }
 .btn{
     margin-right: 3%;
+    border-radius: 10px;
 }
 .bouton{
     margin-top: 2%;
     text-align: center;
+    border-radius: 55px;
 }
 .bouton + button {
     margin-right: 5%;

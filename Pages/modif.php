@@ -38,7 +38,7 @@
     
 
     $id_Question=$_GET['id_question'];
-    
+    $id_compte=3;
     $sql="select * from question where id_question =".$id_Question;
     $result=  mysqli_query($conn, $sql);
     $ligne = mysqli_fetch_assoc($result);
@@ -75,7 +75,7 @@
 if (isset($_POST['valider'])){
     $sql1="update question set titre =\"".$_POST['titre']. "\",contenu=\"".$_POST['question']."\", verif=1 where id_question = ".$id_Question;
     $sql2="update reponse set contenu_rep=\"".$_POST['reponse']."\" where id_question=".$id_Question;
-
+    $sql3="INSERT INTO log_rep (id_compte, id_question, date_rep) VALUES ('$id_compte', '$id_Question', NOW())";
     
     $result1 = mysqli_query($conn, $sql1);
     if (!$result1) {
@@ -83,6 +83,10 @@ if (isset($_POST['valider'])){
     }
 
     $result2=mysqli_query($conn, $sql2);
+    if (!$result2) {
+        die('Erreur SQL : ' . mysqli_error($conn));
+    }
+    $result3=mysqli_query($conn, $sql3);
     if (!$result2) {
         die('Erreur SQL : ' . mysqli_error($conn));
     }
