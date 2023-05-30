@@ -99,7 +99,7 @@ if (isset($_POST['supprimer'])){
     if (!$result1) {
         die('Erreur SQL : ' . mysqli_error($conn));
     }
-    header("Location: consultation.php");
+    header("Location: consultation_2.php");
 }
     }
 

@@ -46,7 +46,7 @@
 			<form method="post">
 				<button type="submit" class="btn btn-primary btn-block button-spacing" name="logout">Se déconnecter</button>
 			</form>
-			<a href="poserQuestion.php" class="btn btn-primary btn-block button-spacing">Poser une question</a>
+			<a href="page_quest.php" class="btn btn-primary btn-block button-spacing">Poser une question</a>
 			<a href="consultation_2.php" class="btn btn-primary btn-block button-spacing">Retourner sur le forum</a>
 			<form method="post">
             <select class="form-control" name ="cat">
