@@ -81,7 +81,7 @@
             </form>
           </div>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-9 offset-md-3">
 	  <h1 class="main_title">Questions en attente</h1>
         <div class="question-list">
           <?php
@@ -102,21 +102,25 @@
 						  WHERE question.id_cat = categorie.id_cat AND 
 						  categorie.nom_cat = '$cat' AND
 						  question.verif = 0 AND
-						  question.id_compte = '$id_compte'";
+						  question.id_compte = '$id_compte'
+						  ORDER BY question.date_question";
 				} else {
 					$sql = "SELECT question.* FROM question, categorie 
 				    WHERE question.id_cat = categorie.id_cat AND 
 				    categorie.nom_cat = '$cat' AND
-					question.verif = 0";
+					question.verif = 0
+					ORDER BY question.date_question";
 				}
 			} else {
 				if ($statut == 0){
 					$sql = "SELECT * FROM question 
 							WHERE question.verif = 0 AND
-							id_compte = '$id_compte' ";
+							id_compte = '$id_compte'
+							ORDER BY question.date_question";
 				} else {
 					$sql = "SELECT * FROM question 
-							WHERE question.verif = 0";		
+							WHERE question.verif = 0
+							ORDER BY question.date_question";		
 				}
 			}
 			
