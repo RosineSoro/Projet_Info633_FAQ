@@ -44,7 +44,7 @@
     $ligne = mysqli_fetch_assoc($result);
 
     echo("<div id ='form-content'>");
-    echo ("<form  method=\"post\">");
+    echo ("<form action='attente.php'  method=\"post\">");
     
     echo "<div class='mb-3'>";
     echo '<label class="form-label">Titre de la question : </label>';
