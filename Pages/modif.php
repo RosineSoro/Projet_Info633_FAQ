@@ -52,7 +52,6 @@
     echo("</div>");
     echo("</form>");*/
     echo("<div id ='form-content'>");
-    echo ("<form  method=\"post\">");
     echo ("<form action='attente.php'  method=\"post\">");
     
     echo "<div class='mb-3'>";
