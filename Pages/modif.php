@@ -53,7 +53,7 @@
     $rep = mysqli_fetch_assoc($result2);
     
     echo("<div id ='form-content'>");
-    echo ("<form action='attente.php'  method=\"post\">");
+    echo ("<form   method=\"post\">");
     
     echo "<div class='mb-3'>";
     echo '<label class="form-label">Titre de la question : </label>';
@@ -91,6 +91,7 @@ if (isset($_POST['valider'])){
     if (!$result2) {
         die('Erreur SQL : ' . mysqli_error($conn));
     }
+    header("Location: consultation.php");
 }
 if (isset($_POST['supprimer'])){
     $sql="delete from question where id_question=".$id_Question;

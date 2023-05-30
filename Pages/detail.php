@@ -31,7 +31,6 @@
 
  
 <?php
-    if(isset($_SESSION['satut'])){
     
         $id_Question=$_GET['id'];
         $sql="select * from question where id_question =".$id_Question; // récupère le titre de la question et la question
@@ -41,6 +40,7 @@
         $sql2="select * from reponse where id_question=".$id_Question; //récupère réponse de la question.
         $result2= mysqli_query($conn, $sql2);
         $rep = mysqli_fetch_assoc($result2);
+        echo("<a href=\"consultation_2.php\"><h3>page accueille</h3></a>");
         echo("<div id ='question_content'>");
         
         echo "<div class='mb-3'>";
@@ -57,12 +57,10 @@
         echo("</div>");
         
         if ($_SESSION['statut']==1){
-            echo("<a href=modif.php?id_question=".$id_Question."</a>");
+            echo("<a href=\"modif.php?id_question=".$id_Question."\">modifier page</a>");
         }
-    }
-    else{
-        echo("<h1>Tu n'as pas accès à cette page</h1>")
-    }
+    
+    
 ?>
 
 </body>
