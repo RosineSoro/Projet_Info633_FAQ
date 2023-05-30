@@ -2,16 +2,24 @@ body {
   min-height: 100vh;
 }
 
+
 .sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
   background-color: #151618;
-  overflow-y:auto;
+  overflow-y: auto;
 }
 
 .sidebar-content {
-  position: fixed;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100%;}
+
+.sidebar-content .btn {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .question-list {
@@ -22,6 +30,8 @@ body {
   background-color: #ffffff;
   margin-bottom: 20px;
   padding: 15px;
+  border-bottom: 1px solid #000000; /* Ajout de la bordure basse */
+
 }
 
 a {
@@ -29,19 +39,12 @@ a {
 }
 
 .sidebar-content .btn {
-  width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
   margin-bottom: 50px;
 }
 
-/*.button-spacing {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 10px;
-  margin-bottom: 50px;
-}*/
 
 .col-md-9 .main_title {
   text-align: center;

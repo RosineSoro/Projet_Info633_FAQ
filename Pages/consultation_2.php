@@ -79,7 +79,7 @@
               </form>
           </div>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-9 offset-md-3">
 		<h1 class="main_title">FORUM</h1>
         <div class="question-list">
           <?php
@@ -98,26 +98,29 @@
               $sql = "SELECT question.* FROM question, categorie 
 					  WHERE question.id_cat = categorie.id_cat AND 
 					  categorie.nom_cat = '$cat' AND
-					  question.verif = 1;
+					  question.verif = 1
+					  ORDER BY question.date_question;
 					  ";
 			} else {
-              $sql = "SELECT * FROM question WHERE question.verif = 1";
+              $sql = "SELECT * FROM question WHERE question.verif = 1 ORDER BY question.date_question";
             }
 			
 
             // Exécution de la requête SQL pour récupérer les questions
             $result = $conn->query($sql);
 
-            // Affichage des questions
-            if ($result->num_rows > 0) {
-              while ($row = $result->fetch_assoc()) {
-                echo '<div class="question">';
-                echo '<h2>' . $row["titre"] . '</h2>';
-                echo '<p>' . $row["contenu"] . '</p>';
-                echo '<a href="detail.php?id=' . $row["id_question"] . '">Voir réponse</a>';
-                echo '</div>';
-              }
-            }
+			// Affichage des questions
+			if ($result->num_rows > 0) {
+				while ($row = $result->fetch_assoc()) {
+					echo '<div class="question">';
+					echo '<h2>' . $row["titre"] . '</h2>';
+					echo '<p><em><small>' . $row["date_question"] . '</small></em></p>';
+					echo '<p>' . $row["contenu"] . '</p>';
+					echo '<a href="details.php?id=' . $row["id_question"] . '">Voir réponse</a>';
+					echo '</div>';
+				}
+			}
+
 
             // Fermeture de la connexion à la base de données.
             $conn->close();

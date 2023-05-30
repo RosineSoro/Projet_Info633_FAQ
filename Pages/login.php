@@ -58,27 +58,28 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="login.css">
 </head>
-<div class="container">
+<body>
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="text-center mb-4">FORUM BDTW</h2>
+                        <h2 class="mb-4 mb-4 title">FORUM BDTW</h2>
                         <?php
                         if (isset($error_message)) {
                             echo '<div class="alert alert-danger mb-4">' . $error_message . '</div>';
                         }
                         ?>
                         <form action="login.php" method="POST">
-                            <div class="field">
+                            <div class="form-group">
                                 <label for="pseudo" class="form-label">Pseudo :</label>
                                 <input type="text" name="pseudo" class="form-control" required>
                             </div>
-                            <div class="field">
+                            <div class="form-group">
                                 <label for="password" class="form-label">Mot de passe :</label>
                                 <input type="password" name="password" class="form-control" required>
                             </div>
-                            <div class="field">
+                            <div class="form-group text-center">
                                 <button type="submit" class="btn btn-primary" name="button">Se connecter</button>
                             </div>
                         </form>
