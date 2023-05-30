@@ -7,6 +7,7 @@ body {
 .title {
 	text-align: center;
 	font-weight: bold;
+	margin-bottom: 5rem;
 }
 
 .container {
@@ -33,7 +34,9 @@ body {
   width: 100%;
 }
 
-
+.connectButton {
+	background-color: #DCDCDD;
+}
 
 
 

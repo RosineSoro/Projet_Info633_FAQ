@@ -10,7 +10,7 @@
 	// Vérifier si le formulaire de login a été soumis
 	if (isset($_POST['button'])) {
 		$pseudo = $_POST['pseudo'];
-		$pw = $_POST['password'];
+		$hashed_pw = md5($_POST["password"]);
 
 		// Connexion à la base de données
 		$servername = "tp-epua:3308";
@@ -27,7 +27,7 @@
 		}
 
 		// Requête pour vérifier si le compte existe dans la table compte:
-		$sql = "SELECT * FROM compte WHERE pseudo = '$pseudo' AND pw = '$pw'";
+		$sql = "SELECT * FROM compte WHERE pseudo = '$pseudo' AND pw = '$hashed_pw'";
 		$result = $conn->query($sql);
 
 		if ($result) {
@@ -64,7 +64,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="mb-4 mb-4 title">FORUM BDTW</h2>
+                        <h1 class="mb-4 mb-4 title">FORUM BDTW</h1>
                         <?php
                         if (isset($error_message)) {
                             echo '<div class="alert alert-danger mb-4">' . $error_message . '</div>';
@@ -80,7 +80,7 @@
                                 <input type="password" name="password" class="form-control" required>
                             </div>
                             <div class="form-group text-center">
-                                <button type="submit" class="btn btn-primary" name="button">Se connecter</button>
+                                <button type="submit" class="btn btn-primary connectButton" name="button">Se connecter</button>
                             </div>
                         </form>
                     </div>
