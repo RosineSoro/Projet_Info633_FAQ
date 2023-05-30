@@ -35,22 +35,14 @@
 
 <?php
 
-    
+    session_start();
 
     $id_Question=$_GET['id_question'];
-    $id_compte=3;
+    $id_compte=$_SESSION['id_compte'];
     $sql="select * from question where id_question =".$id_Question;
     $result=  mysqli_query($conn, $sql);
     $ligne = mysqli_fetch_assoc($result);
-        /*echo ("<form  method=\"post\">");
-    echo("<textarea class='modif' name='titre'>".$ligne['titre']."</textarea>");
-    echo("<textarea  class='modif' name='question'>".$ligne['contenu']."</textarea>");
-    echo("<textarea  class='modif' name='reponse' placeholder='tapez votre reponse ici'></textarea>");
-    echo("<div class='bouton' >");
-    echo("<button  name='valider' type= 'submit'>valider</button>");
-    echo("<button  name='supprimer' type= 'submit'>supprimer</button>");
-    echo("</div>");
-    echo("</form>");*/
+
     echo("<div id ='form-content'>");
     echo ("<form  method=\"post\">");
     

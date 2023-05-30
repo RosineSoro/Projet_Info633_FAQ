@@ -57,7 +57,7 @@ function estProfesseur()
 // Vérifier si l'utilisateur est connecté en tant qu'étudiant
 function estEtudiant()
 {   $conn=connexion();
-    if (($_SESSION['statut'])==1) {
+    if (($_SESSION['statut'])==0) {
             
         return true; 
       
@@ -114,16 +114,16 @@ function afficherFormulaireQuestionEtudiant()
     echo '<form method="get">';
     echo '<label for="categorie">categorie</label>';
 
-echo '<select name="categorie">';
-echo '<option value="">--Please choose an option--</option>';
-echo '<option value="1">java</option>';
-echo '<option value="2">php</option>';
-echo '<option value="3">html</option>';
-echo '<option value="4">css</option>';
-echo '<option value="5">divers</option>';
-echo '</select>';
-echo '<input type="submit" name="poser" value="Poser une question">';
-echo '<a href="consultation_2.php">Cliquez ici pour aller vers la page principale</a>  ';
+    echo '<select name="categorie">';
+    echo '<option value="">--Please choose an option--</option>';
+    echo '<option value="1">java</option>';
+    echo '<option value="2">php</option>';
+    echo '<option value="3">html</option>';
+    echo '<option value="4">css</option>';
+    echo '<option value="5">divers</option>';
+    echo '</select>';
+    echo '<input type="submit" name="poser" value="Poser une question">';
+    echo '<a href="consultation_2.php">Cliquez ici pour aller vers la page principale</a>  ';
     
     
             if (isset($_GET["poser"])){
@@ -139,10 +139,8 @@ echo '<a href="consultation_2.php">Cliquez ici pour aller vers la page principal
 function afficherPageQuestions()
 {
     if (estProfesseur()) {
-        
         afficherFormulaireQuestionProf();
     } elseif (estEtudiant()) {
-        
         afficherFormulaireQuestionEtudiant();
     } 
 }
@@ -151,3 +149,4 @@ afficherPageQuestions()
 
 
 </body>
+</html>
