@@ -43,7 +43,7 @@
 
     }
     else{
-    $id_Question=$_GET['id_question'];
+    $id_Question=$_GET['id'];
     $id_compte=$_SESSION['id_compte'];
     $sql="select * from question where id_question =".$id_Question;
     $result=  mysqli_query($conn, $sql);
