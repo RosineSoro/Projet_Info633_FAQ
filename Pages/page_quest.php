@@ -139,7 +139,6 @@ session_start();
 	
     echo '<form method="get" action="page_quest.php">';
     echo '<input type="text" id="titre" name="titre" value="' . htmlspecialchars($titreValue) . '"><br><br>';
-    echo '<input type="text" id="titre" name="titre"><br><br>';
     echo '<label for="contenu">Contenu :</label><br>';
     echo '<textarea id="contenu" name="contenu">' . htmlspecialchars($contenuValue) . '</textarea><br><br>';
     echo '<form method="get">';
