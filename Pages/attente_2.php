@@ -132,6 +132,7 @@
               while ($row = $result->fetch_assoc()) {
                 echo '<div class="question">';
                 echo '<h2>' . $row["titre"] . '</h2>';
+				echo '<p><em><small>' . $row["date_question"] . '</small></em></p>';
                 echo '<p>' . $row["contenu"] . '</p>';
 				if ($statut == 1){
 					echo '<a href="modif.php?id=' . $row["id_question"] . '">Modifier la question</a>';

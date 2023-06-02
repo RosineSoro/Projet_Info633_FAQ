@@ -1,20 +1,17 @@
 body {
   background-image: url(background_image.jpg);
   background-repeat: repeat;
-  font-family : calibri;
+  font-family: calibri;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .title {
 	text-align: center;
 	font-weight: bold;
 	margin-bottom: 5rem;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
 .card {
