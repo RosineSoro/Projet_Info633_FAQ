@@ -131,7 +131,7 @@ session_start();
             $result = mysqli_query($conn, $sql_4) or die("Requête invalide: " . mysqli_error($conn) . "\n" . $sql_4);
             
             // Redirection vers consultation_2.php
-            header("Location: consultation_2.php");
+            echo '<meta http-equiv="refresh" content="0; URL=consultation_2.php">';
             exit();
         }
     }
