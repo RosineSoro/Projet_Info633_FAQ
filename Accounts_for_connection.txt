@@ -1,0 +1,11 @@
+Identifiants pour se connecter :
+- Enseignant : 
+	login : val
+	password : mdp1
+
+- Etudiant :
+	login : vpb
+	password : mdp2
+
+	login : srh
+	password : mdp3
