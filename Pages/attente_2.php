@@ -139,7 +139,9 @@
 				}
                 echo '</div>';
               }
-            }
+            } else {
+				echo '<p> Aucune question en attente de validation pour le moment.</p>';
+			}
 
             // Fermeture de la connexion à la base de données (à nouveau)
             $conn->close();

@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (!isset($_SESSION['pseudo'])) {
+  echo 'Vous devez être connecté pour pouvoir poser des questions sur ce forum. Redirection...';
+  echo '<meta http-equiv="refresh" content="3;URL=login.php">';
+  exit();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,7 +83,7 @@ session_start();
             $result = mysqli_query($conn, $sql_4) or die("Requête invalide: " . mysqli_error($conn) . "\n" . $sql_4);
             
             // Redirection vers consultation_2.php
-			echo '<meta http-equiv="refresh" content="0; URL=consultation_2.php">';
+			echo '<meta http-equiv="refresh" content="0; URL=attente_2.php">';
             exit();
         }
     }
@@ -131,7 +136,7 @@ session_start();
             $result = mysqli_query($conn, $sql_4) or die("Requête invalide: " . mysqli_error($conn) . "\n" . $sql_4);
             
             // Redirection vers consultation_2.php
-            echo '<meta http-equiv="refresh" content="0; URL=consultation_2.php">';
+			echo '<meta http-equiv="refresh" content="0; URL=attente_2.php">';
             exit();
         }
     }
@@ -139,6 +144,7 @@ session_start();
 	
     echo '<form method="get" action="page_quest.php">';
     echo '<input type="text" id="titre" name="titre" value="' . htmlspecialchars($titreValue) . '"><br><br>';
+    echo '<input type="text" id="titre" name="titre"><br><br>';
     echo '<label for="contenu">Contenu :</label><br>';
     echo '<textarea id="contenu" name="contenu">' . htmlspecialchars($contenuValue) . '</textarea><br><br>';
     echo '<form method="get">';
@@ -161,16 +167,11 @@ session_start();
     echo '</form>';
   }
 
-  // Vérifier si l'utilisateur est connecté
-  if (isset($_SESSION['id_compte'])) {
-    // Vérifier si l'utilisateur est un professeur
-    if (estProfesseur()) {
+  // Vérifier si l'utilisateur est un professeur
+  if (estProfesseur()) {
       afficherFormulaireQuestionProf();
-    } else if (estEtudiant()) {
+  } else if (estEtudiant()) {
       afficherFormulaireQuestionEtudiant();
-    }
-  } else {
-    echo 'Veuillez vous connecter pour poser une question.';
   }
   ?>
 

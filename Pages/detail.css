@@ -1,33 +1,69 @@
-
-.modif{
-    margin-top: 5px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    
-    
+/* Réinitialisation des marges et des paddings */
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
 }
 
-.question-label, h2{
-    color: #007BFF;
+/* Liens */
+.back-link {
+    display: block;
+    margin-bottom: 20px;
+    color: #007bff;
+    text-decoration: none;
 }
 
-#question-content{
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 3%;
-
-}
-
-h1{
-    margin-top: 5%;
+/* Conteneur principal */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
     text-align: center;
 }
-div{
-    margin-top: 20px;
+
+/* Question */
+.question {
+    margin-bottom: 40px;
 }
 
-p {
-	margin-bottom: 50px;
-	margin-top: 5px;
-  }
+.question h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #000;
+}
+
+.question hr {
+    border: 1px solid #000;
+    margin: 20px 0;
+}
+
+.question h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.question p {
+    font-size: 18px;
+    color: #000;
+}
+
+/* Réponse */
+.answer {
+    margin-bottom: 40px;
+}
+
+.answer h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.answer p {
+    font-size: 18px;
+    color: #000;
+}
